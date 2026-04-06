@@ -2,20 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>foodapp</groupId>
   <artifactId>java-application</artifactId>
   <version>1.0-SNAPSHOT</version>
-
+  <packaging>war</packaging>
   <name>java-application</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
   </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -27,7 +24,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -41,7 +37,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -50,7 +45,7 @@
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <!-- default lifecycle, war packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.1</version>
@@ -64,8 +59,12 @@
           <version>3.3.0</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.4.2</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.3.2</version>
+          <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
